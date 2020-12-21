@@ -1,0 +1,21 @@
+Directions:
+
+Consider the following method and a call to that method:
+def my_method(a, b = 2, c = 3, d)
+  p [a, b, c, d]
+end
+
+my_method(4, 5, 6)
+
+Use the ruby documentation to determine what this code will print.
+
+My answer:
+
+The code will print [4, 5, 3, 6].
+
+If you look under "Default Positional Arguments", the documentation explains that Ruby fills in missing arguments from left to right.
+First the code assigns 4 to `a`, then it assigns 6 to `d`. This leaves only the arguments with default values (b and c). `b` is the leftmost, so
+5 gets assigned to b, and c remains it's default value, 3.
+
+
+Source: https://ruby-doc.com/core-2.5.2/doc/syntax/calling_methods_rdoc.html#top

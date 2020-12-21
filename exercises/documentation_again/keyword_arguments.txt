@@ -1,0 +1,13 @@
+Directions:
+
+What does this code print?
+5.step(to: 10, by: 3) { |value| puts value }
+
+
+My answer:
+The code prints
+```
+5
+8
+```
+The loop ends after 8 because the next step, 11, exceeds the limit, 10.

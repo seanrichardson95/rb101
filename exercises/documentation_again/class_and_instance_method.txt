@@ -1,0 +1,15 @@
+Directions:
+Locate the ruby documentation for methods File::path and File#path. How are they different?
+
+My original answer:
+`File::path` returns the string representation of the path. It takes an argument, the path, and returns a string.
+
+`File#path` returns the pathname used to create file as a string. In the example, the method gets called on a filepath and takes no arguments.
+
+LS answer:
+File::path is a class method, so it gets called on a class.
+
+File#path is an instance method, so it gets called on an object.
+
+:: signifies class method
+# signifies instance method.

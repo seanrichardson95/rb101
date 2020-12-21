@@ -1,0 +1,23 @@
+Directions:
+
+Assume you have the following code:
+require 'date'
+
+puts Date.civil
+puts Date.civil(2016)
+puts Date.civil(2016, 5)
+puts Date.civil(2016, 5, 13)
+
+What will each of the 4 puts statements print?
+
+My answer:
+The documentation for this can be found at https://ruby-doc.com/stdlib/libdoc/date/rdoc/Date.html#method-c-civil
+
+The `require` statement imports `Date` from the standard library. The default value for Date::civil is -4712-01-01, which is where I get my first answer from.
+
+``` ruby
+puts Date.civil  #=> -4712-01-01
+puts Date.civil(2016)  #=> 2016-01-01
+puts Date.civil(2016, 5)  #=> 2016-05-01
+puts Date.civil(2016, 5, 13)  #=> 2016-05-13
+```
