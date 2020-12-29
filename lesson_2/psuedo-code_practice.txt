@@ -1,0 +1,70 @@
+1. a method that returns the sum of two integers
+
+> Casual psuedo-code
+Take two integer inputs
+Return the summation of the integers
+
+> Formal psuedo-code
+
+START
+
+# given int1 and int2
+SET summation = int1 + int2
+
+END
+
+
+
+2. a method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+> Casual psuedo-code
+
+Given an array of strings called strings
+
+-Set a variable to the result of the join method on the strings array
+-Return the variable
+
+> Formal pseudo-code
+
+START
+
+# Given array of strings, called strings
+
+SET long_string = strings array with join() method used on it
+
+PRINT long_string
+
+END
+
+
+
+3. A method that takes an array of integers, and returns a new array with every other element
+
+> Casual pseudo-code
+
+Given an array of integers, ints
+
+-Create an empty array called every_other
+-Iterate through ints with a loop
+-Within the loop, have an if statement which adds the array value if the index % 2 = 0
+
+
+> Formal pseudo-code
+
+BEGIN
+
+# Given array of integers, ints
+
+SET every_other = empty array
+SET iterator = 0
+
+WHILE iterator < ints.length()
+  IF iterator % 2 == 0
+    SET to_be_added = ints at "iterator"
+    Add to_be_added to every_other
+  END
+END
+
+PRINT every_other
+
+END
