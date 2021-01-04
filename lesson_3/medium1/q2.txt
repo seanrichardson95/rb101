@@ -1,0 +1,20 @@
+> Directions
+
+The result of the following statement will be an error:
+puts "the value of 40 + 2 is " + (40 + 2)
+
+Why is this and what are two possible ways to fix this?
+
+> My answer:
+
+This gives a TypeError, because you cannot add together an integer and a string.
+
+To fix this, put 40 + 2 in #{}:
+puts "the value of 40 + 2 is #{40 + 2}"
+
+Another way to fix this is to print the text portion, then puts the numbers:
+print "the value of 40 + 2 is "
+puts 40 + 2
+
+> LS answer:
+puts "the value of 40 + 2 is " + (40+2).to_s
