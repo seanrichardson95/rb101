@@ -1,0 +1,119 @@
+For the assignment => 10. Practice Problems: Methods and More Methods
+
+1. What is the return value of the select method below? Why?
+
+[1, 2, 3].select do |num|
+  num > 5
+  'hi'
+end
+
+>> My Answer:
+The return value is nil, because none of the numbers are above 5. Not sure how the 'hi' comes into play, if at all.
+
+
+>> Actual answer: [1, 2, 3]
+After looking at my notes, 'hi' is a "truthy" value, therefore each value is selected.
+
+>> LS explanation:
+select performs selection based on the truthiness of the block's return value. In this case the return value will always be 'hi', which is a "truthy" value. Therefore select will return a new array containing all of the elements in the original array.
+
+
+2. How does count treat the block's return value? How can we find out?
+['ant', 'bat', 'caterpillar'].count do |str|
+  str.length < 4
+end
+
+>> My answer:
+The return value will be 2, since there are two elements that have a length<4
+We can find this out by saving this method call as a variable, and printing the variable on the next line. You may also be able to print this whole method/block by itself.
+
+>> LS answer: Look at the ruby documentation (which I already did)
+
+
+3. What is the return value of reject in the following code? Why?
+[1, 2, 3].reject do |num|
+  puts num
+end
+
+>> My answer:
+The return value would be [1, 2, 3]. Reject returns the items for which the given block is not true. "puts num" returns nil, therefore for every "num", the block will be untrue.
+
+
+4. What is the return value of each_with_object in the following code? Why?
+['ant', 'bear', 'cat'].each_with_object({}) do |value, hash|
+  hash[value[0]] = value
+end
+
+>> My answer:
+The return value will be a hash {'a' => 'ant', 'b' => 'bear', 'c' => 'cat'}
+The keys will be like that because value[0] gives us the first letter of each string. value will give us each string.
+
+
+5. What does shift do in the following code? How can we find out?
+hash = { a: 'ant', b: 'bear' }
+hash.shift
+
+>> My answer:
+shift will remove the first key-value pair and return it as an array, [:a, 'ant']. The hash will become {b: 'bear'}. I found this out by looking at the documentation. You can also just try it out in irb.
+
+
+6. What is the return value of the following statement? Why?
+['ant', 'bear', 'caterpillar'].pop.size
+
+>> My answer:
+The return value is 11, since the size method will be run on the result from .pop, which removes an element and returns it. The returned value will be the string, caterpillar, which contains 11 characters. 
+
+7. What is the block's return value in the following code? How is it determined? Also, what is the return value of any? in this code and what does it output?
+[1, 2, 3].any? do |num|
+  puts num
+  num.odd?
+end
+
+>> My answer:
+The blocks return value is true for indices 0 and 2, and false for index 1. The return value is determined by the last line in the block, which is num.odd?
+The return value of any? is true or false, depending on whether any of the elements in the array evaluate true with the block (which they will).
+the code will output:
+1
+2
+3
+=> true
+
+>> My updated answer after running it:
+The code outputted:
+1
+=> true
+
+This happened because any? short-circuits once it finds a true value. Therefore the loop wasn't run on the 1st and 2nd index.
+
+
+8. How does take work? Is it destructive? How can we find out?
+arr = [1, 2, 3, 4, 5]
+arr.take(2)
+
+>> My answer:
+We can find out by looking at the documentation.
+Array#take doesn't appear to be destructive. It looks like it returns the first 'n' elements in the array. In this case n = 2, therefore arr.take(2) => [1, 2].
+
+
+9. What is the return value of map in the following code? Why?
+{ a: 'ant', b: 'bear' }.map do |key, value|
+  if value.size > 3
+    value
+  end
+end
+
+>> My answer:
+The return value of map will be [nil, 'bear'] because the block will return nil for 'ant', and will return 'bear' for 'bear' (since its size is 4).
+
+
+10. What is the return value of the following code? Why?
+[1, 2, 3].map do |num|
+  if num > 1
+    puts num
+  else
+    num
+  end
+end
+
+>> My answer:
+[1, nil, nil], since the return value of puts is nil.

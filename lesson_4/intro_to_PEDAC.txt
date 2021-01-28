@@ -1,0 +1,46 @@
+# PROBLEM:
+
+# Given a string, write a method `palindrome_substrings` which returns
+# all the substrings from a given string which are palindromes. Consider
+# palindrome words case sensitive.
+
+# Test cases:
+
+# palindrome_substrings("supercalifragilisticexpialidocious") == ["ili"]
+# palindrome_substrings("abcddcbA") == ["bcddcb", "cddc", "dd"]
+# palindrome_substrings("palindrome") == []
+# palindrome_substrings("") == []
+
+> Understanding the Problem
+Questions:
+  -What is a palindrome?
+  -Will I always be given strings?
+  -What does it mean 'Consider the palindromes case sensitive?
+
+Input:
+  -String
+Output:
+  -Array of palindrome substrings
+Rules:
+  -Explicit requirements
+    -Return only substrings which are palindromes
+    -Palindrome words are case sensitive
+  -Implicit requirements
+    -A palindrome is a string that is the same forward as backwards
+    
+> Algorithm / Data Structure (from LS)
+# Algorithm:
+#  - initialize a result variable to an empty array
+#  - create an array named substring_arr that contains all of the
+#    substrings of the input string that are at least 2 characters long.
+#  - loop through the words in the substring_arr array.
+#  - if the word is a palindrome, append it to the result
+#    array
+#  - return the result array
+
+Creating substrings method
+# for each starting index from 0 through the next to last index position
+  # for each substring length from 2 until there are no substrings of that length
+    # extract the substring of the indicated length starting at the indicate index position
+  # end of inner loop
+# end of outer loop.
