@@ -29,7 +29,11 @@
 #   -rjust num - 2 + "*"*2
   
 def triangle(num)
-  num.times {|x| puts " ".rjust(num - 1 - x) + "*"*(x+1)}
+  counter = 1
+  while counter <= num
+    puts " ".rjust(num - counter + 1) + "*"*(counter)
+    counter += 1
+  end
 end
 
 triangle(3)
