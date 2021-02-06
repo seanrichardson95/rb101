@@ -1,7 +1,7 @@
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
-FIRST = 'Computer'
+FIRST = 'Choose'
 BEST_SQUARE = 5
 WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                 [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
@@ -16,7 +16,7 @@ end
 # rubocop:disable Metrics/AbcSize
 def display_board(brd)
   system 'clear'
-  puts "You're a #{PLAYER_MARKER}. The Computer is a #{COMPUTER_MARKER}."
+  puts "You're #{PLAYER_MARKER}. The Computer is #{COMPUTER_MARKER}."
   puts ""
   puts "     |     |"
   puts "  #{brd[1]}  |  #{brd[2]}  |  #{brd[3]}"
