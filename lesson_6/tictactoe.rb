@@ -1,3 +1,4 @@
+PLAYERS = ['Player', 'Computer']
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -113,6 +114,7 @@ def joinor(array, delimiter = ', ', joiner = 'or')
 end
 
 def choose_first
+  system 'clear'
   loop do
     prompt "You get to choose who goes first"
     prompt "Type '1' for 'Player' and type '2' for 'Computer'"
@@ -121,6 +123,11 @@ def choose_first
     return goes_first if answer == '1' || answer == '2'
     puts "I'm sorry, please enter a valid response."
   end
+end
+
+def initialize_scoreboard(scoreboard)
+  PLAYERS.each {|player| scoreboard[player.downcase.to_sym] = 0}
+  scoreboard
 end
 
 def place_piece!(board, current_player)
@@ -134,30 +141,49 @@ end
 def alternate_player(current_player)
   current_player == 'Player' ? 'Computer' : 'Player'
 end
+
+def gameplay_loop(brd, current_player)
+  loop do
+    display_board(brd)
+    place_piece!(brd, current_player)
+    current_player = alternate_player(current_player)
+    break if someone_won?(brd) || board_full?(brd)
+  end
+end
+
+def play_again?
+  valid_answers = %w(y n yes no)
+  answer = ''
+  loop do
+    prompt "Would you like to play again? (y/n)"
+    answer = gets.chomp.downcase
+    break if valid_answers.include?(answer)
+    puts "Only 'yes', 'y', 'no', and 'n' are valid answers"
+  end
+  answer.start_with?('y') ? true : false
+end
+
+scoreboard = {}
 # main loop
 loop do
-  
-  # scoreboard initialized
-  scoreboard = { player: 0, computer: 0 }
-  
+  system 'clear'
+
+  scoreboard = initialize_scoreboard(scoreboard)
+
   # new game loop
   loop do                         
     board = initialize_board
     current_player = FIRST
     current_player = choose_first if FIRST == 'Choose'
     # gameplay loop
-    loop do
-      display_board(board)
-      place_piece!(board, current_player)
-      current_player = alternate_player(current_player)
-      break if someone_won?(board) || board_full?(board)
-    end
+    gameplay_loop(board, current_player)
     
     display_board(board)
     
     if someone_won?(board)
-      prompt "#{detect_winner(board)} won!"
-      update_score!(scoreboard, detect_winner(board))
+      winner = detect_winner(board)
+      prompt "#{winner} won!"
+      update_score!(scoreboard, winner)
     else
       prompt "It's a tie!"
     end
@@ -166,7 +192,7 @@ loop do
     prompt "You have #{scoreboard[:player]} win(s)"
     
     if scoreboard.values.any? {|wins| wins == 5}
-      prompt "#{detect_winner(board)} wins the series!"
+      prompt "#{winner} wins the series!"
       break
     else
       prompt "The first to 5 wins the series!"
@@ -176,9 +202,8 @@ loop do
     
   end
   
-  prompt "Play again? (y/n)"
-  answer = gets.chomp
-  break unless answer.downcase.start_with?('y')
+  repeat_loop = play_again?
+  break unless repeat_loop
 end
 
 prompt "Thanks for playing tic tac toe! Goodbye"
