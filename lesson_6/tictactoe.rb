@@ -173,7 +173,7 @@ loop do
     board = initialize_board
     current_player = FIRST
     current_player = choose_first if FIRST == 'Choose'
-    # gameplay loop
+
     gameplay_loop(board, current_player)
     
     display_board(board)
