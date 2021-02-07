@@ -1,4 +1,3 @@
-PLAYERS = ['Player', 'Computer']
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -126,8 +125,7 @@ def choose_first
 end
 
 def initialize_scoreboard(scoreboard)
-  PLAYERS.each {|player| scoreboard[player.downcase.to_sym] = 0}
-  scoreboard
+  {player: 0, computer: 0}
 end
 
 def place_piece!(board, current_player)
